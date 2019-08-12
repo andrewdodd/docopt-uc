@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="docopt_uc",
+    name="docopt-uc",
     description="A docopt library suitable for microcontrollers.",
     license="MIT",
     version="1.0.1",
