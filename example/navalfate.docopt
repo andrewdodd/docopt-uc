@@ -1,0 +1,17 @@
+Usage:
+  Naval_Fate> ships
+  Naval_Fate> ship create <name>
+  Naval_Fate> ship <name> move <x> <y> [--speed=<kn>]
+  Naval_Fate> ship shoot <x> <y>
+  Naval_Fate> mine set <x> <y> [--moored|--drifting]
+  Naval_Fate> mine remove <x> <y> [--moored|--drifting]
+  Naval_Fate> mine sweep
+  Naval_Fate> --help
+  Naval_Fate> --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+  --speed=<kn>  Speed in knots [default: 10].
+  --moored      Moored (anchored) mine.
+  --drifting    Drifting mine.
