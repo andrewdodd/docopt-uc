@@ -5,7 +5,7 @@ A Docopt library suitable for simple CLI generation in microcontrollers.
 
 This library should be installed however you normally install Python packages (i.e. it is usually recommended to use a virtual environment or something similar e.g. `mkvirtualenv my-environment`). To install from PyPI:
 
-    > pip install docopt_uc
+    > pip install docopt-uc
    
 To use with the built-in C and H file templates, simply provide the module name and your docopt file:
 
@@ -25,14 +25,14 @@ If you want to provide your own C and H file templates, that is also possible vi
 
 # A more detailed example
 
-This repository has an [example](https://github.com/andrewdodd/docopt_uc/tree/master/example) folder that contains:
+This repository has an [example](https://github.com/andrewdodd/docopt-uc/tree/master/example) folder that contains:
 
  - A slightly modified `navalfate.docopt` file
  - A basic `main.c` file, that sets up a more UART-like terminal environment (well...on my Mac it does) for the rest of the example to use
  - A basic `cli_shell` implementation, that implements basic command history, and does what you might expect a CLI in a small embedded project might do
  - The start of the implementation for the Naval Fate CLI functionality
 
- There is an additional [README](https://github.com/andrewdodd/docopt_uc/blob/master/example/README.md) in that folder which explains how to run the example and see this library in action.
+ There is an additional [README](https://github.com/andrewdodd/docopt-uc/blob/master/example/README.md) in that folder which explains how to run the example and see this library in action.
  
  **I suggest you give it a go!**
 
