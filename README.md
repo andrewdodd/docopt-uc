@@ -25,14 +25,16 @@ If you want to provide your own C and H file templates, that is also possible vi
 
 # A more detailed example
 
-This repository has an example folder that contains:
+This repository has an [example](https://github.com/andrewdodd/docopt_uc/tree/master/example) folder that contains:
 
  - A slightly modified `navalfate.docopt` file
  - A basic `main.c` file, that sets up a more UART-like terminal environment (well...on my Mac it does) for the rest of the example to use
  - A basic `cli_shell` implementation, that implements basic command history, and does what you might expect a CLI in a small embedded project might do
  - The start of the implementation for the Naval Fate CLI functionality
 
- There is an additional README in that folder which explains how to run the example and see this library in action.
+ There is an additional [README](https://github.com/andrewdodd/docopt_uc/blob/master/example/README.md) in that folder which explains how to run the example and see this library in action.
+ 
+ **I suggest you give it a go!**
 
 # Why this library
 
@@ -44,6 +46,8 @@ Almost all of these CLIs generate hours of discussion on "features" (both real p
  - How should we structure these menus best, both in code and actually at the terminal? 
  - How can we allow the product manager the freedom to rearrange the CLI, but be confident we have the code right? and
  - Who is going to write all this boilerplate (because...let's face it...a lot of this code is easy and tedious but usually quite important)?
+ 
+ `docopt-uc` attempts to tackle some of them.
 
 
 # This library's position
@@ -60,11 +64,11 @@ This library takes a few hard positions on the items above, and comes what I hop
     
  3. Coping with change
 
-    A CLI is often built incrementally in a project, to aid with development, testing, board-bring-up and well...anything. Product managers also evolve their understanding of products as they come to life. Too many times I have had to rearrange a CLI menu comprised of strange tables of tables of structs with unclear members such as `{void *leaf, char *nodeName, void *nextLevel, void *userArg}` etc, only to be unsure if every edge case was covered. This library believes the docopt file should be the product manager's responsibility, while using this library to generate the functions needed means that renames, restructurings, additions and deletions are all hopefully within the capabilities of your more junior engineers.
+    A CLI is often built incrementally in a project, to aid with development, testing, board-bring-up and well...anything. Product managers also evolve their understanding of products as they come to life. Too many times I have had to rearrange a CLI menu comprised of strange tables of tables of structs with unclear members such as `{void *leaf, char *nodeName, void *nextLevel, void *userArg}` etc, only to be unsure if every edge case was covered. This library believes the ***docopt file should be the product manager's responsibility***. Using this library to generate the functions and dispatch stemming from the docopt file means that renames, restructurings, additions and deletions are all hopefully within the capabilities of any level of engineer.
     
  4. At the terminal
 
-    This might be a bit controversial but...the implementation of the default template for this library doesn't care for the order of your command words. While some people get a bit upset by this, I personally believe it is a better UX to be flexible. In the provided example, all of these commands would produce the same result:
+    This might be a bit controversial but...the implementation of the default template for this library doesn't worry about the order of the command words. While some people get a bit upset by this, I personally believe it is a better UX to be flexible. In the provided example, all of these commands would produce the same result:
     
         > ship create Titanic
         > create ship Titanic
@@ -76,15 +80,15 @@ This library takes a few hard positions on the items above, and comes what I hop
     
 # Caveats
 
-Obviously there are some caveats and limitations with this library. An inexhausive list include:
+Obviously there are some caveats and limitations with this library. An inexhausive list includes:
 
 ### There's a limit of 64 unique keywords (and an assumption of 64-bit integer support)
 
-The design uses string comparison on each of the passed arguments to build an "opcode". It then uses this opcode to dispatch to the correct handler function (and consequently doesn't care about the order of those commands). I chose a 64-bit unsigned integer because 64-bit is probably supported by your compiler AND it is wide enough for you to hopefully never run out of unique keywords.
+The design uses string comparison on each of the passed arguments to build an "opcode". It then uses this opcode to dispatch to the correct handler function (and consequently doesn't care about the order of those commands). I chose a 64-bit unsigned integer because 64-bit is probably supported by your compiler AND it is wide enough for you to hopefully never run out of unique command words.
 
-If you would like to use a 32-bit or 16-bit or 128-bit wide opcode, you can also just edit the `docopt_args.h` file you use (just be careful that the `docopt-uc` command does not over-write it...perhaps by passing the `--no-docopt-args-h` argument). The generated C file only checks that the number of keywords will fit in the `opcode` struct member.
+If you would like to use a 32-bit or 16-bit or 128-bit wide opcode, you can provide your own `docopt_args.h` file (just be careful that the `docopt-uc` command does not over-write it...perhaps by passing the `--no-docopt-args-h` argument). The generated C file only checks that the number of keywords will fit in the `opcode` struct member.
 
-You can try it out by setting the opcode size to `uint8_t` and running just `make` in the example, you should get a compile time error because there are 9 keywords:
+You can try it out by setting the opcode size to `uint8_t` and running just `make` in the example, you should get a compile time error because there are 9 commands:
     
     navalfate_autogen.c:65:1: error: 'assertion_failed___file___65' declared as an array with a negative size
     CASSERT(LAST < (FIELD_SIZEOF(DocoptArgs, opcode) * 8), __file__);
@@ -100,7 +104,7 @@ If you do run out, you can always make two CLIs and stitch them together with yo
       return "Not supported";
     }
 
-But you should also reconsider both a) if this library is really appropriate, and b) if the extent of your CLI is really appropriate.
+But you should probably reconsider both a) if this library is really appropriate, and b) if the extent of your CLI is really appropriate.
 
 ### It is probably not that fast
 
