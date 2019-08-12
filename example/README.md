@@ -8,7 +8,7 @@ To get it running, follow the steps below.
 
 You can download the files from the directory, or you could clone the repository:
 
-    > git clone https://github.com/andrewdodd/docopt_uc.git
+    > git clone https://github.com/andrewdodd/docopt-uc.git
     
 Make and activate a virtualenv for this project (or use pipenv or do what you like!), e.g.:
 
@@ -16,11 +16,11 @@ Make and activate a virtualenv for this project (or use pipenv or do what you li
     
 You should install the Docopt-uC library, either from the PyPI repository:
 
-    > pip install docopt_uc
+    > pip install docopt-uc
     
 Or directly from the cloned repository:
 
-    > cd docopt_uc       # i.e. change into the root of the repo, next to the setup.py file
+    > cd docopt-uc       # i.e. change into the root of the repo, next to the setup.py file
     > pip install -e ./  # install an "editable" version of this library
     
     
