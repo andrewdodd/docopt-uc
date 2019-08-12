@@ -63,6 +63,9 @@ This should create the `docopt_args.h` file, and the two `navalfate_autogen` fil
 You'll need a C compiler installed, but it should be as simple as:
 
     > make
+    
+You should see:
+
     gcc -c -o obj/main.o main.c -I.
     gcc -c -o obj/cli_shell.o cli_shell.c -I.
     gcc -c -o obj/navalfate_autogen.o navalfate_autogen.c -I.
