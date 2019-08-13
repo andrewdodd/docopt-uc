@@ -1,4 +1,7 @@
 # Docopt uC
+
+[![PyPI version](https://badge.fury.io/py/docopt-uc.svg)](https://badge.fury.io/py/docopt-uc)
+    
 A Docopt library suitable for simple CLI generation in microcontrollers.
 
 # How to use
@@ -126,4 +129,8 @@ I think strikes a good balance at this stage, especially for embedded projects.
 
 # Thanks
 
-To [Kim Blomqvist's blog post](http://kblomqvist.github.io/2013/03/21/creating-beatiful-command-line-interfaces-for-embedded-systems-part1) for inspiring me to do this, and to the [docopt library](http://docopt.org/) for making it possible. 
+To [Kim Blomqvist's blog post](http://kblomqvist.github.io/2013/03/21/creating-beatiful-command-line-interfaces-for-embedded-systems-part1) for inspiring me to do this, and to both the [docopt library](http://docopt.org/) and CS for making it possible. 
+
+# Contributing
+
+All contributions are welcome, also forking and evolving is too!
