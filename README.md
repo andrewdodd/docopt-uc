@@ -55,7 +55,7 @@ Almost all of these CLIs generate hours of discussion on "features" (both real p
 
 # This library's position
 
-This library takes a few hard positions on the items above, and comes what I hope is a middle ground:
+This library takes a few hard positions on the items above, and comes to what I hope is a middle ground:
 
  1. Boilerplate is unavoidable
 
