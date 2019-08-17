@@ -79,7 +79,7 @@ This library takes a few hard positions on the items above, and comes to what I 
         > Titanic create ship
         ... etc
     
-    I agree a user doing this at your CLI is a bit strange (especially the last one), but the translation error in the first two is pretty common in my experience and something that is easy to support if your technical design doesn't rest on tables of tables of tables (I really don't like the table thing, but I guess you figured that out).
+    I agree a user doing this at your CLI is a bit strange (especially the last one), but the transposition error in the first two is pretty common in my experience and something that is easy to support if your technical design doesn't rest on tables of tables of tables (I really don't like the table thing, but I guess you figured that out).
     
 # Caveats
 
