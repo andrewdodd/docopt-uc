@@ -10,6 +10,7 @@ _OBJ = main.o cli_shell.o navalfate_autogen.o navalfate_impl.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
+	@mkdir -p $(@D)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 example: $(OBJ)
