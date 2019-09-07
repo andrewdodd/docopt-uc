@@ -145,7 +145,8 @@ def main():
         if "help" in parts:
             continue
         tokens.extend(parts)
-        docopt_text = usage_lines[idx].strip() if idx < len(usage_lines) else None
+        docopt_text = usage_lines[idx].strip(
+        ) if idx < len(usage_lines) else None
         commands.append(Command(parts, docopt_text))
 
     if args['--short'] is not None:
@@ -189,8 +190,8 @@ def main():
 
     if args["--no-docopt-args-h"] is False:
         # copy the docopt header file to the output directory
-        docopt_args = pkg_resources.resource_filename(__name__,
-                                                    'templates/docopt_args.h')
+        docopt_args = pkg_resources.resource_filename(
+            __name__, 'templates/docopt_args.h')
         shutil.copy2(docopt_args, args['--output_dir'])
 
 
