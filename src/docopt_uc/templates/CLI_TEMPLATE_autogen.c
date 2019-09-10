@@ -58,8 +58,6 @@ enum {
 #define FIELD_SIZEOF(t, f) (sizeof(((t*)0)->f))
 CASSERT(LAST < (FIELD_SIZEOF(DocoptArgs, opcode) * 8), __file__);
 
-static DocoptArgs docoptArgs;
-
 static const char *Names[] = {
   // AUTOGEN NAMES OF OPTIONS - START
   {% for token in rendering.tokens -%}
@@ -154,6 +152,11 @@ static enum DocoptError parseArgs(DocoptArgs *args, uint8_t argc, char **argv) {
 
 char const *{{rendering.module_prefix}}_processCommand(uint8_t argc, char **argv)
 {
+  {%- if rendering.multithreaded %}
+  DocoptArgs docoptArgs; // Lives on the stack
+  {% else %}
+  static DocoptArgs docoptArgs; // Shared between all calls
+  {% endif -%}
   int errNo = parseArgs(&docoptArgs, argc, argv); 
 
   if (errNo != DOCOPT_NO_ERROR) {

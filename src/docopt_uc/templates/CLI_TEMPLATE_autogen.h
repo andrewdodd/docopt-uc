@@ -5,7 +5,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-
+/**
+ * Process the tokens from a single command.
+ *
+{%- if rendering.multithreaded %}
+ * NB: This implementation is threadsafe, but a DocoptArgs struct on the stack.
+{%- else %}
+ * NB: This implementation is NOT threadsafe, as it shares a static DocoptArgs struct with all callers.
+{%- endif %}
+ */
 char const *{{rendering.module_prefix}}_processCommand(uint8_t argc, char **argv);
 char const *{{rendering.module_prefix}}_getPrompt(void);
 char const *{{rendering.module_prefix}}_getHelpText(void);

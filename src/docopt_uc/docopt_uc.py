@@ -20,6 +20,10 @@ Options:
   --short=<prompt>         Replace the prompt with this instead (i.e. replace
                            the "docopt_uc.py" with this string)
   --no-docopt-args-h       Prevent the output of the "docopt_args.h" file [default: False]
+  --multithreaded          When using the default template, this will place the
+                           DocoptArgs struct on the stack (instead of having
+                           only one. Activate this if you need multiple
+                           instances of the same CLI. [default: False]
 
 """
 
@@ -61,11 +65,13 @@ class Command:
 
 
 class Rendering:
-    def __init__(self, module_name, commands, prompt, doc):
+    def __init__(self, module_name, commands, prompt, doc,
+                 multithreaded=False):
         self.module_name = module_name
         self.commands = commands
         self.prompt = prompt
         self.doc = doc
+        self.multithreaded = multithreaded
 
     @property
     def help(self):
@@ -152,7 +158,8 @@ def main():
     if args['--short'] is not None:
         doc = doc.replace(prompt + " ", args['--short'] + " ")
 
-    rendering = Rendering(args['<module_name>'], commands, prompt, doc)
+    rendering = Rendering(args['<module_name>'], commands, prompt, doc,
+                          args['--multithreaded'])
 
     if len(rendering.tokens) > 64:
         raise docopt.DocoptExit(
