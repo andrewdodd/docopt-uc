@@ -7,7 +7,7 @@ setup(
     name="docopt-uc",
     description="A docopt library suitable for microcontrollers.",
     license="MIT",
-    version="1.0.1",
+    version="1.0.2",
     author="Andrew Dodd",
     author_email="andrew.john.dodd@gmail.com",
     maintainer="Andrew Dodd",
