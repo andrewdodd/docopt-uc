@@ -63,7 +63,7 @@ This library takes a few hard positions on the items above, and comes to what I 
     
  2. Shell features are different to the CLI command handling
 
-    This library believes command completion, command history, etc. all belong to the __shell implementation__ (sure...command completion needs to know the commands, but that's a different story). This library is looking to solve the problem *"what function should I call once the user pushes enter"*. It assumes the shell will do the work to parse the user's command into a standard `(uint8_t argc, char **argv)` signature, and it just needs to dispatch to the correct CLI handler function.
+    This library believes command completion, command history, etc. all belong to the __shell implementation__ (sure...command completion needs to know the commands, but that's a different story). This library is looking to solve the problem *"what function should I call once the user pushes enter"*. It assumes the shell will do the work to parse the user's command into a standard `(uint8_t argc, char **argv)` signature, and it just needs to dispatch to the correct CLI handler function. The [example](https://github.com/andrewdodd/docopt-uc/tree/master/example) demonstrates this distinction in that the shell implementation does not support quoted arguments (e.g. `create ship "HMS Endeavour"`), as this is a shell concern and I'm too lazy to add it (instead prefering just to lean on `strtok()`).
     
  3. Coping with change
 
