@@ -14,7 +14,7 @@ To use with the built-in C and H file templates, simply provide the module name 
 
     > docopt-uc mymodule mymodule.docopt
    
-This will produce three files in the directory, the `docopt_args.h` file (which you only need one of in your project), and the two generated files. For example:
+This will produce three files in the directory, the `docopt_args.h` file (of which you only need one in your project), and the two generated files. For example:
 
     > ls
     navalfate.docopt
@@ -59,7 +59,7 @@ This library takes a few hard positions on the items above, and comes to what I 
 
  1. Boilerplate is unavoidable
 
-    CLIs are typically low-value, non-differentiating parts of your embedded products (unless you are Cisco...in which case they are part of an operator lock-in strategy). They are also usually really boring and repetitive to implement. However, they are also usually very important, as they are used for debugging, calibration, configuration, firmware upgrading, etc, and they often try to cut across the entire application (e.g. does the config update 'right now' _and_ in the persistant store?). By flattening out the CLI menu structure; generating all the necessary function headers; and by handling the dispatch for you, using a tool like `docopt-uc` can give you confidence that nothing has been missed.
+    CLIs are typically low-value, non-differentiating parts of your embedded products (unless you are Cisco...in which case they are part of an operator lock-in strategy). They are also usually really boring and repetitive to implement. However, they are also usually very important, as they are used for debugging, calibration, configuration, firmware upgrading, etc, and they often try to cut across the entire application (e.g. does the config update 'right now' _and_ in the persistent store?). By flattening out the CLI menu structure; generating all the necessary function headers; and by handling the dispatch for you, using a tool like `docopt-uc` can give you confidence that nothing has been missed.
     
  2. Shell features are different to the CLI command handling
 
