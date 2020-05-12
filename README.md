@@ -4,6 +4,25 @@
     
 A Docopt library suitable for simple CLI generation in microcontrollers.
 
+# Why use this library? / Who might be interested?
+
+This library leverages the approach of the [docopt](http://docopt.org/) project to ease the pain in creating small to medium size command line interfaces for microcontrollers. That is...
+
+> _you specify the output you want from `--help`, and this library creates the CLI for you_!
+
+Using this library you will be able to:
+ - Specify your CLI in a docopt file format.
+ - Generate a working CLI implementation to include verbatim in your project.
+ - Receive a single header file that specifies all of the 'boilerplate' handler functions you have to implement.
+ - **Regenerate** the implementation and header file at any time!
+   - _The header file is particularly nice, as when it is combined with a diff tool it shows clearly what has been added, removed or changed._
+ 
+You might be interested in this if you are:
+ - Creating a product that offers a UART CLI (i.e. does not have telnet / SSH or is not running linux).
+ - Wanting to add a CLI to your Arduino or other bare-metal platform, but don't know where to start.
+ - Sick of the tables of tables of pointers that your company currently uses for CLI structure.
+
+
 # How to use
 
 This library should be installed however you normally install Python packages (i.e. it is usually recommended to use a virtual environment or something similar e.g. `mkvirtualenv my-environment`). To install from PyPI:
